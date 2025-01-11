@@ -8,7 +8,7 @@ export const connectToMongoDB = async (
     .then(() => {
       console.log("Connected to MongoDB");
     })
-    .catch(() => {
-      console.log("Failed to connect to MongoDB");
+    .catch((error) => {
+      console.log("Failed to connect to MongoDB", error.message);
     });
 };
