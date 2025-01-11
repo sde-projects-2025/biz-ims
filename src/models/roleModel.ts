@@ -1,16 +1,15 @@
-import { Schema, Document, model } from "mongoose";
-
-interface IRole extends Document {
-  roleName: "admin" | "manager" | "sales executive";
-}
+import { Schema, model } from "mongoose";
+import { IRole } from "../types/modelTypes/roleTypes.js";
 
 const roleSchema: Schema<IRole> = new Schema(
   {
+    roleId: {
+      type: String,
+      required: [true, "Please enter Role Identity"],
+    },
     roleName: {
       type: String,
-      required: [true, "Please enter Role"],
-      enum: ["admin", "manager", "sales executive"],
-      default: "sales executive",
+      required: [true, "Please enter Role Name"],
     },
   },
   { timestamps: true }

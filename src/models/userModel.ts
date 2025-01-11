@@ -1,13 +1,6 @@
-import { Schema, Document, model } from "mongoose";
+import { Schema, model } from "mongoose";
 import validator from "validator";
-interface IUser extends Document {
-  name: string;
-  email: string;
-  password: string;
-  roleId: Schema.Types.ObjectId;
-  storeId: Schema.Types.ObjectId;
-  isActive: boolean;
-}
+import { IUser } from "../types/modelTypes/userTypes.js";
 
 const userSchema: Schema<IUser> = new Schema(
   {

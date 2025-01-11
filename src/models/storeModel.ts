@@ -1,11 +1,5 @@
-import { Schema, Document, model } from "mongoose";
-interface IStore extends Document {
-  storeName: string;
-  storeAddress: string;
-  phone: string;
-  isStoreActive: boolean;
-  storeManagerId: Schema.Types.ObjectId;
-}
+import { Schema, model } from "mongoose";
+import { IStore } from "../types/modelTypes/storeTypes.js";
 
 const storeSchema: Schema<IStore> = new Schema(
   {
@@ -17,7 +11,7 @@ const storeSchema: Schema<IStore> = new Schema(
       type: String,
       required: [true, "Please enter Store Address"],
     },
-    phone: {
+    storeContact: {
       type: String,
       required: [true, "Please enter Store Contact Number"],
     },
