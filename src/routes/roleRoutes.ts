@@ -1,8 +1,7 @@
 import express from "express";
+import getRoleData from "../controllers/roleController.js";
 const roleRouter = express.Router();
 
-roleRouter.get("/role", (req, res) => {
-  res.send({ success: true, message: "This is Role Home Page" });
-});
+roleRouter.get("/role", getRoleData);
 
 export default roleRouter;

@@ -1,8 +1,7 @@
 import express from "express";
+import getStoreData from "../controllers/storeController.js";
 const storeRouter = express.Router();
 
-storeRouter.get("/store", (req, res) => {
-  res.send({ success: true, message: "This is Store Home Page" });
-});
+storeRouter.get("/store", getStoreData);
 
 export default storeRouter;

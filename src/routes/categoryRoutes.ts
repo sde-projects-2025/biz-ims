@@ -1,8 +1,7 @@
 import express from "express";
+import getCategoryData from "../controllers/categoryController.js";
 const categoryRouter = express.Router();
 
-categoryRouter.get("/category", (req, res) => {
-  res.send({ success: true, message: "This is Category Home Page" });
-});
+categoryRouter.get("/category", getCategoryData);
 
 export default categoryRouter;
