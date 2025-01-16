@@ -43,7 +43,7 @@ export const errorMiddleware: ErrorRequestHandler = (
 
 export const TryCatch =
   (func: ControllerType): RequestHandler =>
-  async (req, res, next) => {
+  async (req: Request, res: Response, next: NextFunction) => {
     try {
       await func(req, res, next);
     } catch (err) {
