@@ -1,4 +1,5 @@
 import express from "express";
+
 import { errorMiddleware } from "./middlewares/errorMiddlewares.js";
 import router from "./routes/routes.js";
 
