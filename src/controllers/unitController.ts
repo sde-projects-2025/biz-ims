@@ -19,7 +19,9 @@ export const getAllUnits = TryCatch(
 export const deleteUnit = TryCatch(
   async (req: Request, res: Response, next: NextFunction) => {
     const id = req.params.id;
-
+    if (!id) {
+      return next(new ErrorHandler("Unit Id is required.", 400));
+    }
     const existingUnit = await Units.findById(id);
 
     if (!existingUnit) {
@@ -36,6 +38,11 @@ export const deleteUnit = TryCatch(
 
 export const updateUnit = TryCatch(async (req, res, next) => {
   const { unitName, unitAbbreviation }: NewUnitReqBody = req.body;
+  if (!unitName || !unitAbbreviation) {
+    return next(
+      new ErrorHandler("Unit name and abbreviation are required.", 400)
+    );
+  }
   const id = req.params.id;
 
   const existingUnit = await Units.findById(id);
@@ -67,7 +74,11 @@ export const updateUnit = TryCatch(async (req, res, next) => {
 export const createUnit = TryCatch(
   async (req: Request, res: Response, next: NextFunction) => {
     const { unitName, unitAbbreviation }: NewUnitReqBody = req.body;
-
+    if (!unitName || !unitAbbreviation) {
+      return next(
+        new ErrorHandler("Unit name and abbreviation are required.", 400)
+      );
+    }
     const existingUnitName = await Units.findOne({ unitName });
     const existingUnitAbr = await Units.findOne({ unitAbbreviation });
 

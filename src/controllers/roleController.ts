@@ -36,6 +36,9 @@ export const deleteRole = TryCatch(
 
 export const updateRole = TryCatch(async (req, res, next) => {
   const { roleId, roleName }: NewRoleReqBody = req.body;
+  if (!roleId || !roleName) {
+    return next(new ErrorHandler("Role id and name are required.", 400));
+  }
   const id = req.params.id;
 
   const existingRole = await Role.findById(id);
@@ -67,7 +70,9 @@ export const updateRole = TryCatch(async (req, res, next) => {
 export const createRole = TryCatch(
   async (req: Request, res: Response, next: NextFunction) => {
     const { roleId, roleName }: NewRoleReqBody = req.body;
-
+    if (!roleId || !roleName) {
+      return next(new ErrorHandler("Role id and name are required.", 400));
+    }
     const existingRole = await Role.findOne({ roleId });
 
     if (existingRole) {
