@@ -4,7 +4,7 @@ import roleRoutes from "./roleRoutes.js";
 
 const router = express.Router();
 
-router.use("/role", roleRoutes);
-router.use("/category", categoryRoutes);
+router.use("/roles", roleRoutes);
+router.use("/categories", categoryRoutes);
 
 export default router;
