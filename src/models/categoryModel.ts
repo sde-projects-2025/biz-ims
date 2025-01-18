@@ -6,7 +6,7 @@ const CategorySchema: Schema = new Schema<ICategory>(
     categoryName: {
       type: String,
       required: true,
-      // unique: [true, "Category Name Already Exist"],
+      unique: [true, "Category Name Already Exist"],
     },
     categoryDesc: {
       type: String,

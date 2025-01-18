@@ -5,13 +5,13 @@ const unitSchema: Schema<IUnit> = new Schema(
   {
     unitName: {
       type: String,
-      required: [true, "Please enter Role Identity"],
+      required: [true, "Please enter Unit Name"],
       unique: [true, "Unit already exists"],
       trim: true,
     },
     unitAbbreviation: {
       type: String,
-      required: [true, "Please enter Role Name"],
+      required: [true, "Please enter Unit Abbreviation"],
       trim: true,
     },
   },
