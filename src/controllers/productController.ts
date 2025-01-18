@@ -49,18 +49,6 @@ export const updateProduct = TryCatch(async (req, res, next) => {
     brand,
   }: NewProductReqBody = req.body;
 
-  if (
-    !productName ||
-    !sku ||
-    !categoryId ||
-    !unitId ||
-    thresholdStock === undefined ||
-    thresholdStock === null ||
-    !image ||
-    !brand
-  ) {
-    return next(new ErrorHandler("All fields are required.", 400));
-  }
   const id = req.params.id;
 
   const existingProduct = await Product.findById(id);
@@ -111,24 +99,14 @@ export const createProduct = TryCatch(
       image,
       brand,
     }: NewProductReqBody = req.body;
-    if (
-      !productName ||
-      !sku ||
-      !categoryId ||
-      !unitId ||
-      thresholdStock ||
-      !image ||
-      !brand
-    ) {
-      return next(new ErrorHandler("All fields are required.", 400));
-    }
+
     const existingProduct = await Product.findOne({ productName: productName });
 
     if (existingProduct) {
       return next(new ErrorHandler("Product already Exists!!", 403));
     }
 
-    const newProduct = Product.create({
+    const newProduct = await Product.create({
       productName: productName,
       productDesc: productDesc,
       categoryId: categoryId,

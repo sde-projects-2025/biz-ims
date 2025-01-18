@@ -86,7 +86,7 @@ export const createUnit = TryCatch(
       return next(new ErrorHandler("Unit already Exists!!", 403));
     }
 
-    const newUnit = Units.create({ unitName, unitAbbreviation }, { new: true });
+    const newUnit = await Units.create({ unitName, unitAbbreviation });
     return res
       .status(201)
       .json(successResponse(newUnit, "Unit created successfully"));
