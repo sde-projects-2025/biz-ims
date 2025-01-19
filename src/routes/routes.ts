@@ -4,6 +4,7 @@ import roleRoutes from "./roleRoutes.js";
 import supplierRoutes from "./supplierRoutes.js";
 import unitRoutes from "./unitRoutes.js";
 import productRoutes from "./productRoutes.js";
+import stockRoutes from "./stockRoutes.js";
 
 const router = express.Router();
 
@@ -12,5 +13,6 @@ router.use("/categories", categoryRoutes);
 router.use("/suppliers", supplierRoutes);
 router.use("/units", unitRoutes);
 router.use("/products", productRoutes);
+router.use("/stocks", stockRoutes);
 
 export default router;
