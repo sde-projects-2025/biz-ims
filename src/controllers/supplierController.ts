@@ -5,7 +5,6 @@ import { TryCatch } from "../middlewares/errorMiddlewares.js";
 import { successResponse } from "../utils/responseFunction.js";
 import ErrorHandler from "../utils/customError.js";
 import {
-  ISupplier,
   NewSupplierReqBody,
   SupplierType,
 } from "../types/modelTypes/supplierTypes.js";
@@ -94,7 +93,7 @@ export const updateSupplier = TryCatch(async (req, res, next) => {
 
   return res
     .status(200)
-    .json(successResponse(updatedSupplier, "Supplier Update Successfully"));
+    .json(successResponse(updatedSupplier, "Supplier Updated Successfully"));
 });
 
 export const deleteSupplier = TryCatch(

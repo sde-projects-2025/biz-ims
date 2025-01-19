@@ -1,11 +1,10 @@
 import { Document } from "mongoose";
 
-export interface IUnit extends Document {
+export interface UnitType {
   unitName: string;
   unitAbbreviation: string;
 }
 
-export interface NewUnitReqBody {
-  unitName: string;
-  unitAbbreviation: string;
-}
+export interface IUnit extends UnitType, Document {}
+
+export interface NewUnitReqBody extends UnitType {}
