@@ -1,7 +1,15 @@
 import express from "express";
-import getStoreData from "../controllers/storeController.js";
-const storeRouter = express.Router();
+import {
+  createStore,
+  updateStore,
+  deleteStore,
+  getAllStoresData,
+  getStoreById,
+} from "../controllers/storeController.js";
+const router = express.Router();
 
-storeRouter.get("/store", getStoreData);
+router.route("/all").get(getAllStoresData);
+router.route("/new").post(createStore);
+router.route("/:id").get(getStoreById).put(updateStore).delete(deleteStore);
 
-export default storeRouter;
+export default router;
