@@ -1,11 +1,10 @@
 import { Document } from "mongoose";
-
-export interface ICategory extends Document {
+export interface CategoryType {
   categoryName: string;
   categoryDesc: string;
+  isCategoryActive: boolean;
 }
 
-export interface NewCategoryReqBody {
-  categoryName: string;
-  categoryDesc: string;
-}
+export interface ICategory extends CategoryType, Document {}
+
+export interface NewCategoryReqBody extends CategoryType {}

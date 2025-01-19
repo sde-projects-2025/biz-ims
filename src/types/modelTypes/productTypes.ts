@@ -1,25 +1,21 @@
 import mongoose, { Document } from "mongoose";
 
-export interface IProduct extends Document {
-  productName: string;
-  productDesc: string;
-  categoryId: mongoose.Schema.Types.ObjectId;
-  unitId: mongoose.Schema.Types.ObjectId;
-  sku: string;
-  isActive: boolean;
-  image: string;
-  thresholdStock: number;
-  brand: string;
-}
-
-export interface NewProductReqBody {
+export interface ProductType {
   productName: string;
   productDesc: string;
   categoryId: string;
   unitId: string;
   sku: string;
-  isActive: boolean;
+  isProductActive: boolean;
   image: string;
   thresholdStock: number;
   brand: string;
 }
+export interface IProduct
+  extends Omit<ProductType, "categoryId" | "unitId">,
+    Document {
+  categoryId: mongoose.Schema.Types.ObjectId;
+  unitId: mongoose.Schema.Types.ObjectId;
+}
+
+export interface NewProductReqBody extends ProductType {}

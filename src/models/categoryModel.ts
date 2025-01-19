@@ -1,5 +1,6 @@
 import mongoose, { Schema, Model } from "mongoose";
 import { ICategory } from "../types/modelTypes/categoryTypes.js";
+import { boolean } from "joi";
 
 const CategorySchema: Schema = new Schema<ICategory>(
   {
@@ -10,6 +11,10 @@ const CategorySchema: Schema = new Schema<ICategory>(
     },
     categoryDesc: {
       type: String,
+    },
+    isCategoryActive: {
+      type: Boolean,
+      default: true,
     },
   },
   {

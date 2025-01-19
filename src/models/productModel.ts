@@ -28,7 +28,7 @@ const ProductSchema: Schema = new Schema<IProduct>(
       required: [true, "Sku is required"],
       trim: true,
     },
-    isActive: {
+    isProductActive: {
       type: Boolean,
       default: true,
     },

@@ -3,12 +3,12 @@ import {
   createProduct,
   updateProduct,
   deleteProduct,
-  getAllProducts,
+  getAllProductsData,
   getProductById,
 } from "../controllers/productController.js";
 const router = express.Router();
 
-router.route("/all").get(getAllProducts);
+router.route("/all").get(getAllProductsData);
 router.route("/new").post(createProduct);
 router
   .route("/:id")
